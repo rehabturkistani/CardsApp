@@ -1,20 +1,19 @@
 import { Card } from "./Card";
-import { CardOrganizer } from "./CardOrganizer";
+import   type{ CardOrganizer } from "./CardOrganizer";//because we only need the type not the implementation in interfaces
 
 export class RecentMistakesFirstSorter implements CardOrganizer {
-    
     public organize(list: Card[]): Card[] {
-        const mistakes: Card[] = []; 
-        const correct: Card[] = [];  
-        for (const c of list) { // iterate all cards
-            if (c.isWrong) {
-                mistakes.push(c); //add mmistakes list
+        const mistakes: Card[] = [];
+        const correct: Card[] = [];
+
+        for (const c of list) {
+            if (c.iswrong) {  
+                mistakes.push(c);
             } else {
-                correct.push(c); //add right list
+                correct.push(c);
             }
         }
 
-        // Mergelists to return mistakes at the top
         return [...mistakes, ...correct];
     }
 }
